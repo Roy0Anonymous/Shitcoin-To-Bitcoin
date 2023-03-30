@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "dentacoin-dcn-logo-2.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
