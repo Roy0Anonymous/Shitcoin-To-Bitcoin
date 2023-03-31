@@ -1,12 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "bitcoin-diamond-bcd-logo.svg",
+      "filename" : "BCD.svg",
       "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
   }
 }

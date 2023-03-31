@@ -13,20 +13,25 @@ class CoinManager: ObservableObject {
     }
     
     @Published var data: CoinsModel?
-
+    @Published var fetchingData: Bool = false
+    
     func fetchData() {
+        fetchingData = true
         let urlString = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest"
-        let api = "0ebeed7c-a4f3-4bb0-9916-18277bd5a58d"
+        let apiKey = "0ebeed7c-a4f3-4bb0-9916-18277bd5a58d"
         
         guard let url = URL(string: urlString) else { return }
         let parameters: [URLQueryItem] = [URLQueryItem(name: "start", value: "1"), URLQueryItem(name: "limit", value: "100"), URLQueryItem(name: "convert", value: "BTC")]
         let urlWithParams = url.appending(queryItems: parameters)
         var request = URLRequest(url: urlWithParams)
-        request.setValue(api, forHTTPHeaderField: "X-CMC_PRO_API_KEY")
+        request.setValue(apiKey, forHTTPHeaderField: "X-CMC_PRO_API_KEY")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
+                DispatchQueue.main.async {
+                    self.fetchingData = false
+                }
                 debugPrint(error.localizedDescription)
                 return
             }
@@ -39,10 +44,14 @@ class CoinManager: ObservableObject {
                 DispatchQueue.main.async {
                     self.data = decodedData
                     self.data?.data.remove(at: 0)
-                    print("Try")
-//                    print(self.data?.data[0].quote.btc)
+                    DispatchQueue.main.async {
+                        self.fetchingData = false
+                    }
                 }
             } catch {
+                DispatchQueue.main.async {
+                    self.fetchingData = false
+                }
                 print(error)
             }
         }.resume()

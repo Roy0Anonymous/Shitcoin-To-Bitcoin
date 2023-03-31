@@ -13,22 +13,23 @@ struct ContentView: View {
     @State private var textFieldValue = ""
     @State private var resultText = "Please Select a Coin to Convert"
     @State private var convertedValue: String = "0.0"
-
+    
     var body: some View {
-        ZStack(alignment: .bottomLeading) {
+        ZStack(alignment: .bottom) {
             Circle()
                 .foregroundColor(.orange)
                 .frame(width: 400, height: 400)
                 .blur(radius: 100)
                 .offset(x: 0, y: 275)
             VStack(alignment: .center, spacing: 0) {
-                HeadingView(title: "Shitcoin to Bitcoin Convertor", subtitle: "Something that you can rely on!")
+                HeadingView(title: "Shitcoin to Bitcoin Convertor", subtitle: "Don't just flush your coins away")
                 HStack {
                     ZStack {
                         Image("Cross")
                             .resizable()
                             .frame(width: 150, height: 150)
                             .padding(.leading)
+                            .shadow(color: .red.opacity(0.5), radius: 10, x: 2, y: 7)
                         Image("TRX")
                             .resizable()
                             .frame(width: 25, height: 25)
@@ -42,6 +43,7 @@ struct ContentView: View {
                         Image("BCD")
                             .resizable()
                             .frame(width: 25, height: 25)
+                            .padding(.leading, 10)
                             .padding(.top, 80)
 
                         Image("SHIB")
@@ -71,11 +73,13 @@ struct ContentView: View {
                     Image("Convert")
                         .resizable()
                         .frame(width: 40, height: 40)
+                        .shadow(color: .blue.opacity(0.5), radius: 4, x: 2, y: 4)
                     Spacer()
                     Image("BTC")
                         .resizable()
                         .frame(width: 150, height: 150)
                         .padding(.trailing)
+                        .shadow(color: .orange.opacity(0.5), radius: 10, x: 2, y: 7)
                 }
 
                 if let data = coinManager.data {
@@ -115,7 +119,7 @@ struct ContentView: View {
                             .frame(width: 150, height: 50, alignment: .center)
                             .background(Color.white)
                             .foregroundColor(.black)
-                            .shadow(color: .white.opacity(0.5), radius: 15, x: 5, y: 5)
+                            .shadow(color: .orange.opacity(0.5), radius: 15, x: 5, y: 5)
                             .cornerRadius(10)
                             .padding(.bottom, 30)
                             .keyboardType(.decimalPad)
@@ -134,7 +138,7 @@ struct ContentView: View {
                     }
                     Button(action: {
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                        if selectedCoin == "Select a Coin" {
+                        if selectedCoin == "Select a Coin" || textFieldValue.isEmpty {
                             return
                         }
                         let currentSelection = data.data.firstIndex { currData in
@@ -144,7 +148,7 @@ struct ContentView: View {
                         convertedValue = String(format: "%.10f", value)
                         resultText = "You'll get \(convertedValue) BTC after recycling your trash"
                     }, label: {
-                        Text("Convert Your Shit Now")
+                        Text("Get Bitcoins Now!")
                             .foregroundColor(.white)
                             .padding()
                             .background(Color.orange)
@@ -170,6 +174,17 @@ struct ContentView: View {
                         .padding(.bottom, 40)
                 }
             }
+            if coinManager.fetchingData {
+                Color.black
+                    .opacity(0.7)
+                    .ignoresSafeArea()
+                
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .scaleEffect(2)
+                    .foregroundColor(.white)
+                    .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
+            }
         }
         .edgesIgnoringSafeArea(.bottom)
     }
@@ -185,6 +200,7 @@ struct HeadingView: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(.orange)
+                .shadow(color: .orange.opacity(0.5), radius: 10, x: 2, y: 7)
                 .multilineTextAlignment(.center)
                 .lineLimit(nil)
                 .truncationMode(.tail)
@@ -197,10 +213,6 @@ struct HeadingView: View {
         .padding(.horizontal)
         .padding(.bottom, 20)
     }
-}
-
-extension Color {
-    static let shinyGrey = Color(UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0))
 }
 
 struct ContentView_Previews: PreviewProvider {
