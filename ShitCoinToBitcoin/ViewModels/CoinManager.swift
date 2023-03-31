@@ -16,7 +16,7 @@ class CoinManager: ObservableObject {
 
     func fetchData() {
         let urlString = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest"
-        let api = "8484ca59-40e1-4527-973d-96b714fc5199"
+        let api = "0ebeed7c-a4f3-4bb0-9916-18277bd5a58d"
         
         guard let url = URL(string: urlString) else { return }
         let parameters: [URLQueryItem] = [URLQueryItem(name: "start", value: "1"), URLQueryItem(name: "limit", value: "100"), URLQueryItem(name: "convert", value: "BTC")]

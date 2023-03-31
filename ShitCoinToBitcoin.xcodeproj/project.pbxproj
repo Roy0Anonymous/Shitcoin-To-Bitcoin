@@ -56,9 +56,9 @@
 			isa = PBXGroup;
 			children = (
 				C63361C029D382E500743E21 /* ShitCoinToBitcoinApp.swift */,
-				C63361C229D382E500743E21 /* ContentView.swift */,
-				C63361CE29D39CCE00743E21 /* CoinsModel.swift */,
-				C63361D029D39D0300743E21 /* CoinManager.swift */,
+				C649B78629D7831900E346E6 /* Views */,
+				C649B78429D7826C00E346E6 /* Models */,
+				C649B78529D7829A00E346E6 /* ViewModels */,
 				C63361C429D382E700743E21 /* Assets.xcassets */,
 				C63361C629D382E700743E21 /* Preview Content */,
 			);
@@ -71,6 +71,30 @@
 				C63361C729D382E700743E21 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C649B78429D7826C00E346E6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C63361CE29D39CCE00743E21 /* CoinsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C649B78529D7829A00E346E6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C63361D029D39D0300743E21 /* CoinManager.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C649B78629D7831900E346E6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C63361C229D382E500743E21 /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -1,7 +1,9 @@
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
 //
-//   let coinsModel = try? JSONDecoder().decode(CoinsModel.self, from: jsonData)
+//  CoinModel.swift
+//  CoinModel
+//
+//  Created by Rahul Roy on 29/03/23.
+//
 
 import Foundation
 
@@ -126,7 +128,7 @@ struct Status: Codable {
     let errorCode: Int
     let errorMessage: JSONNull?
     let elapsed, creditCount: Int
-    let notice: JSONNull?
+//    let notice: JSONNull?
     let totalCount: Int
 
     enum CodingKeys: String, CodingKey {
@@ -135,7 +137,7 @@ struct Status: Codable {
         case errorMessage = "error_message"
         case elapsed
         case creditCount = "credit_count"
-        case notice
+//        case notice
         case totalCount = "total_count"
     }
 }
