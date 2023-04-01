@@ -25,57 +25,57 @@ struct ContentView: View {
                 HeadingView(title: "Shitcoin to Bitcoin Convertor", subtitle: "Don't just flush your coins away")
                 HStack {
                     ZStack {
-                        Image("Cross")
+                        Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "Cross")))
                             .resizable()
                             .frame(width: 150, height: 150)
                             .padding(.leading)
                             .shadow(color: .red.opacity(0.5), radius: 10, x: 2, y: 7)
-                        Image("TRX")
+                        Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "TRX")))
                             .resizable()
                             .frame(width: 25, height: 25)
                             .padding(.bottom, 90)
 
-                        Image("DOGE")
+                        Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "DOGE")))
                             .resizable()
                             .frame(width: 25, height: 25)
                             .padding(.trailing, 60)
 
-                        Image("BCD")
+                        Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "BCD")))
                             .resizable()
                             .frame(width: 25, height: 25)
                             .padding(.leading, 10)
                             .padding(.top, 80)
 
-                        Image("SHIB")
+                        Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "SHIB")))
                             .resizable()
                             .frame(width: 25, height: 25)
                             .padding(.top, 60)
                             .padding(.trailing, 60)
 
-                        Image("DCN")
+                        Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "DCN")))
                             .resizable()
                             .frame(width: 25, height: 25)
                             .padding(.leading, 100)
 
-                        Image("ETN")
+                        Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "ETN")))
                             .resizable()
                             .frame(width: 25, height: 25)
                             .padding(.bottom, 80)
                             .padding(.leading, 60)
 
-                        Image("BTS")
+                        Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "BTS")))
                             .resizable()
                             .frame(width: 25, height: 25)
                             .padding(.leading, 40)
                             .padding(.bottom, 40)
                     }
                     Spacer()
-                    Image("Convert")
+                    Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "Convert")))
                         .resizable()
                         .frame(width: 40, height: 40)
                         .shadow(color: .blue.opacity(0.5), radius: 4, x: 2, y: 4)
                     Spacer()
-                    Image("BTC")
+                    Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "BTC")))
                         .resizable()
                         .frame(width: 150, height: 150)
                         .padding(.trailing)
@@ -164,13 +164,18 @@ struct ContentView: View {
                 }
                 Spacer()
                 HStack() {
-                    Image("SOB")
+                    Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "SOB")))
                         .resizable()
                         .frame(width: 30, height: 30, alignment: .center)
                         .padding(.bottom, 40)
                     Text("Summer of Bitcoin")
                         .font(.footnote)
                         .foregroundColor(.white)
+                        .padding(.bottom, 40)
+                        .padding(.trailing, 15)
+                    Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "BDK")))
+                        .resizable()
+                        .frame(width: 70, height: 20)
                         .padding(.bottom, 40)
                 }
             }
@@ -212,6 +217,25 @@ struct HeadingView: View {
         }
         .padding(.horizontal)
         .padding(.bottom, 20)
+    }
+}
+
+func compressImage(image: UIImage) -> UIImage {
+    let resizedImage = image.aspectFittedToHeight(200)
+    
+    return resizedImage
+}
+
+extension UIImage {
+    func aspectFittedToHeight(_ newHeight: CGFloat) -> UIImage {
+        let scale = newHeight / self.size.height
+        let newWidth = self.size.width * scale
+        let newSize = CGSize(width: newWidth, height: newHeight)
+        let renderer = UIGraphicsImageRenderer(size: newSize)
+
+        return renderer.image { _ in
+            self.draw(in: CGRect(origin: .zero, size: newSize))
+        }
     }
 }
 
