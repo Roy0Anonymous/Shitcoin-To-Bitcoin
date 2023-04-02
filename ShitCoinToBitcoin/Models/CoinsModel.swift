@@ -128,7 +128,6 @@ struct Status: Codable {
     let errorCode: Int
     let errorMessage: JSONNull?
     let elapsed, creditCount: Int
-//    let notice: JSONNull?
     let totalCount: Int
 
     enum CodingKeys: String, CodingKey {
@@ -137,7 +136,6 @@ struct Status: Codable {
         case errorMessage = "error_message"
         case elapsed
         case creditCount = "credit_count"
-//        case notice
         case totalCount = "total_count"
     }
 }

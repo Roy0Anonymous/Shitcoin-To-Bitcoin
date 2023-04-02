@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var textFieldValue = ""
     @State private var resultText = "Please Select a Coin to Convert"
     @State private var convertedValue: String = "0.0"
+    let imageCompressionManager = ImageCompressionManager()
     
     var body: some View {
         ZStack {
@@ -28,57 +29,57 @@ struct ContentView: View {
                     HeadingView(title: "Shitcoin to Bitcoin Convertor", subtitle: "Don't just flush your coins away")
                     HStack {
                         ZStack {
-                            Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "Cross")))
+                            Image(uiImage: imageCompressionManager.compressImage(image: UIImage(imageLiteralResourceName: "Cross")))
                                 .resizable()
                                 .frame(width: 150, height: 150)
                                 .padding(.leading)
                                 .shadow(color: .red.opacity(0.5), radius: 10, x: 2, y: 7)
-                            Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "TRX")))
+                            Image(uiImage: imageCompressionManager.compressImage(image: UIImage(imageLiteralResourceName: "TRX")))
                                 .resizable()
                                 .frame(width: 25, height: 25)
                                 .padding(.bottom, 90)
                             
-                            Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "DOGE")))
+                            Image(uiImage: imageCompressionManager.compressImage(image: UIImage(imageLiteralResourceName: "DOGE")))
                                 .resizable()
                                 .frame(width: 25, height: 25)
                                 .padding(.trailing, 60)
                             
-                            Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "BCD")))
+                            Image(uiImage: imageCompressionManager.compressImage(image: UIImage(imageLiteralResourceName: "BCD")))
                                 .resizable()
                                 .frame(width: 25, height: 25)
                                 .padding(.leading, 10)
                                 .padding(.top, 80)
                             
-                            Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "SHIB")))
+                            Image(uiImage: imageCompressionManager.compressImage(image: UIImage(imageLiteralResourceName: "SHIB")))
                                 .resizable()
                                 .frame(width: 25, height: 25)
                                 .padding(.top, 60)
                                 .padding(.trailing, 60)
                             
-                            Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "DCN")))
+                            Image(uiImage: imageCompressionManager.compressImage(image: UIImage(imageLiteralResourceName: "DCN")))
                                 .resizable()
                                 .frame(width: 25, height: 25)
                                 .padding(.leading, 100)
                             
-                            Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "ETN")))
+                            Image(uiImage: imageCompressionManager.compressImage(image: UIImage(imageLiteralResourceName: "ETN")))
                                 .resizable()
                                 .frame(width: 25, height: 25)
                                 .padding(.bottom, 80)
                                 .padding(.leading, 60)
                             
-                            Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "BTS")))
+                            Image(uiImage: imageCompressionManager.compressImage(image: UIImage(imageLiteralResourceName: "BTS")))
                                 .resizable()
                                 .frame(width: 25, height: 25)
                                 .padding(.leading, 40)
                                 .padding(.bottom, 40)
                         }
                         Spacer()
-                        Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "Convert")))
+                        Image(uiImage: imageCompressionManager.compressImage(image: UIImage(imageLiteralResourceName: "Convert")))
                             .resizable()
                             .frame(width: 40, height: 40)
                             .shadow(color: .blue.opacity(0.5), radius: 4, x: 2, y: 4)
                         Spacer()
-                        Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "BTC")))
+                        Image(uiImage: imageCompressionManager.compressImage(image: UIImage(imageLiteralResourceName: "BTC")))
                             .resizable()
                             .frame(width: 150, height: 150)
                             .padding(.trailing)
@@ -168,7 +169,7 @@ struct ContentView: View {
                     }
                     Spacer()
                     HStack() {
-                        Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "SOB")))
+                        Image(uiImage: imageCompressionManager.compressImage(image: UIImage(imageLiteralResourceName: "SOB")))
                             .resizable()
                             .frame(width: 30, height: 30, alignment: .center)
                             .padding(.bottom, 40)
@@ -177,7 +178,7 @@ struct ContentView: View {
                             .foregroundColor(.white)
                             .padding(.bottom, 40)
                             .padding(.trailing, 15)
-                        Image(uiImage: compressImage(image: UIImage(imageLiteralResourceName: "BDK")))
+                        Image(uiImage: imageCompressionManager.compressImage(image: UIImage(imageLiteralResourceName: "BDK")))
                             .resizable()
                             .frame(width: 70, height: 20)
                             .padding(.bottom, 40)
@@ -225,24 +226,7 @@ struct HeadingView: View {
     }
 }
 
-func compressImage(image: UIImage) -> UIImage {
-    let resizedImage = image.aspectFittedToHeight(200)
-    
-    return resizedImage
-}
 
-extension UIImage {
-    func aspectFittedToHeight(_ newHeight: CGFloat) -> UIImage {
-        let scale = newHeight / self.size.height
-        let newWidth = self.size.width * scale
-        let newSize = CGSize(width: newWidth, height: newHeight)
-        let renderer = UIGraphicsImageRenderer(size: newSize)
-
-        return renderer.image { _ in
-            self.draw(in: CGRect(origin: .zero, size: newSize))
-        }
-    }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

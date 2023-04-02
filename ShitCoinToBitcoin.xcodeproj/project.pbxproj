@@ -13,6 +13,7 @@
 		C63361C829D382E700743E21 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63361C729D382E700743E21 /* Preview Assets.xcassets */; };
 		C63361CF29D39CCE00743E21 /* CoinsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63361CE29D39CCE00743E21 /* CoinsModel.swift */; };
 		C63361D129D39D0300743E21 /* CoinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63361D029D39D0300743E21 /* CoinManager.swift */; };
+		C649B78A29D9810B00E346E6 /* ImageCompressionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C649B78929D9810B00E346E6 /* ImageCompressionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		C63361C729D382E700743E21 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C63361CE29D39CCE00743E21 /* CoinsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsModel.swift; sourceTree = "<group>"; };
 		C63361D029D39D0300743E21 /* CoinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinManager.swift; sourceTree = "<group>"; };
+		C649B78929D9810B00E346E6 /* ImageCompressionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				C63361D029D39D0300743E21 /* CoinManager.swift */,
+				C649B78929D9810B00E346E6 /* ImageCompressionManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				C63361C329D382E500743E21 /* ContentView.swift in Sources */,
 				C63361C129D382E500743E21 /* ShitCoinToBitcoinApp.swift in Sources */,
 				C63361CF29D39CCE00743E21 /* CoinsModel.swift in Sources */,
+				C649B78A29D9810B00E346E6 /* ImageCompressionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
