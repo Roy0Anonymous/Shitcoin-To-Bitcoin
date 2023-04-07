@@ -178,7 +178,7 @@ struct ContentView: View {
                             .foregroundColor(.white)
                             .padding(.bottom, 40)
                             .padding(.trailing, 15)
-                        Image(uiImage: imageCompressionManager.compressImage(image: UIImage(imageLiteralResourceName: "BDK")))
+                        Image(uiImage: imageCompressionManager.compressImage(image: UIImage(imageLiteralResourceName: "bdk")))
                             .resizable()
                             .frame(width: 70, height: 20)
                             .padding(.bottom, 40)
