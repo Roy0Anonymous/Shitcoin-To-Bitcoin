@@ -58,3 +58,25 @@ class CoinManager: ObservableObject {
         }.resume()
     }
 }
+
+enum Icon: String {
+    case BCD
+    case bdk
+    case BTC
+    case BTS
+    case Convert
+    case Cross
+    case DCN
+    case DOGE
+    case ETN
+    case SHIB
+    case SOB
+    case TRX
+    case chevron = "chevron.down"
+}
+
+extension String {
+    init(_ icon: Icon) {
+        self.init(icon.rawValue)
+    }
+}
